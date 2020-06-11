@@ -346,7 +346,7 @@ export default class TableSelector extends React.PureComponent {
     return (
       <div className="section">
         <ControlLabel>
-          {t('See table schema')}{' '}
+          {t('查看表结构')}{' '}
           {this.props.schema && (
             <small>
               ({this.state.tableOptions.length} in <i>{this.props.schema}</i>)

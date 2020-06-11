@@ -22,6 +22,7 @@ from sqlalchemy.exc import NoSuchTableError, SQLAlchemyError
 
 from superset import event_logger
 from superset.models.core import Database
+from superset.sql_parse import ParsedQuery
 from superset.typing import FlaskResponse
 from superset.utils.core import error_msg_from_exception
 from superset.views.base_api import BaseSupersetModelRestApi
@@ -29,6 +30,8 @@ from superset.views.database.decorators import check_datasource_access
 from superset.views.database.filters import DatabaseFilter
 from superset.views.database.mixins import DatabaseMixin
 from superset.views.database.validators import sqlalchemy_uri_validator
+from superset.models.sql_lab import Query
+from sqlalchemy.orm.session import Session
 
 
 def get_foreign_keys_metadata(
@@ -74,25 +77,78 @@ def get_table_metadata(
     """
     keys: List = []
     columns = database.get_columns(table_name, schema_name)
+    # define comment dict by tsl
+    comment_dict = {}
     primary_key = database.get_pk_constraint(table_name, schema_name)
     if primary_key and primary_key.get("constrained_columns"):
         primary_key["column_names"] = primary_key.pop("constrained_columns")
         primary_key["type"] = "pk"
         keys += [primary_key]
+    # get dialect name
+    dialect_name = database.get_dialect().name
+    if isinstance(dialect_name, bytes):
+        dialect_name = dialect_name.decode()
+    # get column comment, presto & hive
+    if dialect_name == "presto" or dialect_name == "hive":
+        db_engine_spec = database.db_engine_spec
+        sql = ParsedQuery("desc {a}.{b}".format(a=schema_name, b=table_name)).stripped()
+        engine = database.get_sqla_engine(schema_name)
+        conn = engine.raw_connection()
+        cursor = conn.cursor()
+        query = Query()
+        session = Session(bind=engine)
+        query.executed_sql = sql
+        query.__tablename__ = table_name
+        session.commit()
+        db_engine_spec.execute(cursor, sql, async_=False)
+        data = db_engine_spec.fetch_data(cursor, query.limit)
+        # parse list data into dict by tsl; hive and presto is different
+        if dialect_name == "presto":
+            for d in data:
+                d[3]
+                comment_dict[d[0]] = d[3]
+        else:
+            for d in data:
+                d[2]
+                comment_dict[d[0]] = d[2]
+        conn.commit()
+
     foreign_keys = get_foreign_keys_metadata(database, table_name, schema_name)
     indexes = get_indexes_metadata(database, table_name, schema_name)
     keys += foreign_keys + indexes
     payload_columns: List[Dict] = []
     for col in columns:
         dtype = get_col_type(col)
-        payload_columns.append(
-            {
-                "name": col["name"],
-                "type": dtype.split("(")[0] if "(" in dtype else dtype,
-                "longType": dtype,
-                "keys": [k for k in keys if col["name"] in k.get("column_names")],
-            }
-        )
+        if len(comment_dict) > 0:
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    "comment": comment_dict[col["name"]],
+                }
+            )
+        elif dialect_name == "mysql":
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    "comment": col["comment"],
+                }
+            )
+        else:
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    # "comment": col["comment"],
+                }
+            )
     return {
         "name": table_name,
         "columns": payload_columns,

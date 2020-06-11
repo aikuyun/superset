@@ -66,9 +66,10 @@ export default function ColumnElement(props) {
       <div className="pull-left m-l-10 col-name">
         {name}
         {icons}
+          (<span className="text-muted">{col.type}</span>)
       </div>
       <div className="pull-right text-muted">
-        <small> {col.type}</small>
+        <small>{col.comment}</small>
       </div>
     </div>
   );

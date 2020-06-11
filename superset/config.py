@@ -137,8 +137,9 @@ SECRET_KEY = (
 )
 
 # The SQLAlchemy connection string.
-SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
-# SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
+# SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
+# SQLALCHEMY_DATABASE_URI = 'mysql://superset:LypnGx8Rwn4vulI0@172.31.32.202/superset'
+SQLALCHEMY_DATABASE_URI = 'mysql://root:root@localhost/superset'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
 
 # In order to hook up a custom password store for all SQLACHEMY connections
@@ -255,23 +256,26 @@ PUBLIC_ROLE_LIKE_GAMMA = False
 # Babel config for translations
 # ---------------------------------------------------
 # Setup default language
-BABEL_DEFAULT_LOCALE = "en"
+BABEL_DEFAULT_LOCALE = "zh"
 # Your application default translation path
 BABEL_DEFAULT_FOLDER = "superset/translations"
 # The allowed translation for you app
 LANGUAGES = {
-    "en": {"flag": "us", "name": "English"},
-    "es": {"flag": "es", "name": "Spanish"},
-    "it": {"flag": "it", "name": "Italian"},
-    "fr": {"flag": "fr", "name": "French"},
-    "zh": {"flag": "cn", "name": "Chinese"},
-    "ja": {"flag": "jp", "name": "Japanese"},
-    "de": {"flag": "de", "name": "German"},
-    "pt": {"flag": "pt", "name": "Portuguese"},
-    "pt_BR": {"flag": "br", "name": "Brazilian Portuguese"},
-    "ru": {"flag": "ru", "name": "Russian"},
-    "ko": {"flag": "kr", "name": "Korean"},
+    "zh": {"flag": "cn", "name": "Chinese"}
 }
+# LANGUAGES = {
+#     "en": {"flag": "us", "name": "English"},
+#     "es": {"flag": "es", "name": "Spanish"},
+#     "it": {"flag": "it", "name": "Italian"},
+#     "fr": {"flag": "fr", "name": "French"},
+#     "zh": {"flag": "cn", "name": "Chinese"},
+#     "ja": {"flag": "jp", "name": "Japanese"},
+#     "de": {"flag": "de", "name": "German"},
+#     "pt": {"flag": "pt", "name": "Portuguese"},
+#     "pt_BR": {"flag": "br", "name": "Brazilian Portuguese"},
+#     "ru": {"flag": "ru", "name": "Russian"},
+#     "ko": {"flag": "kr", "name": "Korean"},
+# }
 
 # ---------------------------------------------------
 # Feature flags
