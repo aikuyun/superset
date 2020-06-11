@@ -49,7 +49,7 @@ A modern, enterprise-ready business intelligence web application.
 
 ### 1. SQL Lab 查看表字段注释
 
-![显示表注释](table_comment.png)
+![显示表注释](https://github.com/aikuyun/superset/blob/master/table_commet.png)
 
 用户希望在左侧筛选表的时候显示字段注释信息，目前只显示了`字段名`和`字段类型`。具体改造如下：
 
