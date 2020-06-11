@@ -35,7 +35,7 @@ Superset
 
 A modern, enterprise-ready business intelligence web application.
 
-[**Why Superset**](#why-superset) | 
+[**Why Superset**](#why-superset) |
 [**Database Support**](#database-support) |
 [**Installation and Configuration**](#installation-and-configuration) |
 [**Get Help**](#get-help) |
@@ -45,190 +45,150 @@ A modern, enterprise-ready business intelligence web application.
 [**License**](#license) |
 
 
-## Screenshots & Gifs
+## 我改了哪些地方？
 
-**View Dashboards**
+### 1. SQL Lab 查看表字段注释
 
-<kbd><img title="View Dashboards" src="https://raw.githubusercontent.com/apache/incubator-superset/master/superset-frontend/images/screenshots/bank_dash.png"></kbd><br/>
+![显示表注释](table_comment.png)
 
-**Slice & dice your data**
+用户希望在左侧筛选表的时候显示字段注释信息，目前只显示了`字段名`和`字段类型`。具体改造如下：
 
-<kbd><img title="Slice & dice your data" src="https://raw.githubusercontent.com/apache/incubator-superset/master/superset-frontend/images/screenshots/explore.png"></kbd><br/>
-
-**Query and visualize your data with SQL Lab**
-
-<kbd><img title="SQL Lab" src="https://raw.githubusercontent.com/apache/incubator-superset/master/superset-frontend/images/screenshots/sqllab.png"></kbd><br/>
-
-**Visualize geospatial data with deck.gl**
-
-<kbd><img title="Geospatial" src="https://raw.githubusercontent.com/apache/incubator-superset/master/superset-frontend/images/screenshots/deckgl_dash.png"></kbd><br/>
-
-**Choose from a wide array of visualizations**
-
-<kbd><img title="Visualizations" src="https://raw.githubusercontent.com/apache/incubator-superset/master/superset-frontend/images/screenshots/visualizations.png"></kbd><br/>
-
-## Why Superset
-
-Superset provides:
-* An intuitive interface to explore and visualize datasets, and
-    create interactive dashboards.
-* A wide array of beautiful visualizations to showcase your data.
-* Easy, code-free, user flows to drill down and slice and dice the data
-    underlying exposed dashboards. The dashboards and charts act as a starting
-    point for deeper analysis.
-* A state of the art SQL editor/IDE exposing a rich metadata browser, and
-    an easy workflow to create visualizations out of any result set.
-* An extensible, high granularity security model allowing intricate rules
-    on who can access which product features and datasets.
-    Integration with major
-    authentication backends (database, OpenID, LDAP, OAuth, REMOTE_USER, ...)
-* A lightweight semantic layer, allowing to control how data sources are
-    exposed to the user by defining dimensions and metrics
-* Out of the box support for most SQL-speaking databases
-* Deep integration with Druid allows for Superset to stay blazing fast while
-    slicing and dicing large, realtime datasets
-* Fast loading dashboards with configurable caching
-
-
-## Database Support
-
-Superset speaks many SQL dialects through SQLAlchemy - a Python
-SQL toolkit that is compatible with most databases. A list of
-supported databases can be found
-[here](https://superset.incubator.apache.org/#databases).
-
-
-## Installation and Configuration
-
-[See in the documentation](https://superset.incubator.apache.org/installation.html)
-
-
-## Get Help
-
-* [Stackoverflow tag](https://stackoverflow.com/questions/tagged/apache-superset)
-* [Join Community Slack](https://join.slack.com/t/apache-superset/shared_invite/enQtNDMxMDY5NjM4MDU0LWJmOTcxYjlhZTRhYmEyYTMzOWYxOWEwMjcwZDZiNWRiNDY2NDUwNzcwMDFhNzE1ZmMxZTZlZWY0ZTQ2MzMyNTU)
-* [Mailing list](https://lists.apache.org/list.html?dev@superset.apache.org)
-
-
-## Contributor Guide
-
-Interested in contributing? Check out
-[Contributing.MD](https://github.com/apache/superset/blob/master/CONTRIBUTING.md) to learn how to contribute and best practices.
-
-
-## Resources
-
-* [Blog](https://preset.io/blog/)
-* [Docker image](https://hub.docker.com/r/preset/superset/)
-* [Youtube Channel](https://www.youtube.com/channel/UCMuwrvBsg_jjI2gLcm04R0g)
-  * [May 15, 2020: Virtual Meetup Recording. Topics: 0.36 Overview, Committers Self-Intro, Roadmap](https://www.youtube.com/watch?v=tXGDmqjmcTs&t=20s)
-
-## Superset Users
-
-Here's a list of organizations that have taken the time to send a PR to let
-the world know they are using Superset. If you are a user and want to be recognized,
-all you have to do is file a simple PR [like this one](https://github.com/apache/incubator-superset/pull/7576). 
-Join our growing community!
-
- 1. [6play](https://www.6play.fr) [@CoryChaplin]
- 1. [AiHello](https://www.aihello.com) [@ganeshkrishnan1]
- 1. [Airbnb](https://github.com/airbnb) 
- 1. [Airboxlab](https://foobot.io) [@antoine-galataud]
- 1. [Aktia Bank plc](https://www.aktia.com) [@villebro]
- 1. [American Express](https://www.americanexpress.com) [@TheLastSultan]
- 1. [Amino](https://amino.com) [@shkr]
- 1. [Apollo GraphQL](https://www.apollographql.com/) [@evans]
- 1. [Ascendica Development](http://ascendicadevelopment.com) [@davidhassan]
- 1. [Astronomer](https://www.astronomer.io) [@ryw]
- 1. [bilibili](https://www.bilibili.com) [@Moinheart]
- 1. [Brilliant.org](https://brilliant.org/) 
- 1. [Capital Service S.A.](http://capitalservice.pl) [@pkonarzewski]
- 1. [Clark.de](http://clark.de/) 
- 1. [Cloudsmith](https://cloudsmith.io) [@alancarson]
- 1. [CnOvit](http://www.cnovit.com/) [@xieshaohu]
- 1. [Deepomatic](https://deepomatic.com/) [@Zanoellia]
- 1. [Dial Once](https://www.dial-once.com/en/) 
- 1. [Digit Game Studios](https://www.digitgaming.com/)
- 1. [Douban](https://www.douban.com/) [@luchuan]
- 1. [Dragonpass](https://www.dragonpass.com.cn/) [@zhxjdwh]
- 1. [Dremio](https://dremio.com) [@narendrans]
- 1. [Endress+Hauser](http://www.endress.com/) [@rumbin]
- 1. [Faasos](http://faasos.com/) [@shashanksingh]
- 1. [Fanatics](https://www.fanatics.com) [@coderfender]
- 1. [FBK - ICT center](http://ict.fbk.eu) 
- 1. [Fordeal](http://www.fordeal.com) [@Renkai]
- 1. [GFG - Global Fashion Group](https://global-fashion-group.com) [@ksaagariconic]
- 1. [GfK Data Lab](http://datalab.gfk.com) [@mherr]
- 1. [Grassroot](https://www.grassrootinstitute.org/) 
- 1. [Hostnfly](https://www.hostnfly.com/) [@alexisrosuel]
- 1. [HuiShouBao](http://www.huishoubao.com/) [@Yukinoshita-Yukino]
- 1. [Intercom](https://www.intercom.com/) [@kate-gallo]
- 1. [jampp](https://jampp.com/) 
- 1. [komoot](https://www.komoot.com/) [@christophlingg]
- 1. [Konfío](http://konfio.mx) [@uis-rodriguez]
- 1. [Kuaishou](https://www.kuaishou.com/) [@zhaoyu89730105]
- 1. [Let's Roam](https://www.letsroam.com/) 
- 1. [Lime](https://www.limebike.com/) [@cxmcc]
- 1. [Living Goods](https://www.livinggoods.org) [@chelule]
- 1. [Lyft](https://www.lyft.com/) 
- 1. [Maieutical Labs](https://maieuticallabs.it) [@xrmx]
- 1. [Myra Labs](http://www.myralabs.com/) [@viksit]
- 1. [Now](https://www.now.vn/) [@davidkohcw]
- 1. [Ona](https://ona.io) [@pld]
- 1. [Peak AI](https://www.peak.ai/) [@azhar22k]
- 1. [PeopleDoc](https://www.people-doc.com) [@rodo]
- 1. [Popoko VM Games Studio](https://popoko.live) 
- 1. [Preset, Inc.](https://preset.io) 
- 1. [Pronto Tools](http://www.prontotools.io) [@zkan]
- 1. [PubNub](https://pubnub.com) [@jzucker2]
- 1. [QPID Health](http://www.qpidhealth.com/) 
- 1. [Qunar](https://www.qunar.com/) [@flametest]
- 1. [Rakuten Viki](https://www.viki.com) 
- 1. [Reward Gateway](https://www.rewardgateway.com) 
- 1. [Safaricom](https://www.safaricom.co.ke/) [@mmutiso]
- 1. [Scoot](https://scoot.co/) [@haaspt]
- 1. [ScopeAI](https://www.getscopeai.com) [@iloveluce]
- 1. [Shopee](https://shopee.sg) [@xiaohanyu]
- 1. [Shopkick](https://www.shopkick.com) [@LAlbertalli]
- 1. [Showmax](https://tech.showmax.com) [@bobek]
- 1. [source{d}](https://www.sourced.tech) [@marnovo]
- 1. [Steamroot](https://streamroot.io/) 
- 1. [Tails.com](https://tails.com) [@alanmcruickshank]
- 1. [Tenable](https://www.tenable.com) [@dflionis]
- 1. [THE ICONIC](http://theiconic.com.au/) [@ksaagariconic]
- 1. [timbr.ai](https://timbr.ai/) [@semantiDan]
- 1. [TME QQMUSIC/WESING](https://www.tencentmusic.com/) 
- 1. [Tobii](http://www.tobii.com/) [@dwa]
- 1. [Tooploox](https://www.tooploox.com/) [@jakubczaplicki]
- 1. [TrustMedis](https://trustmedis.com) [@famasya]
- 1. [Twitter](https://twitter.com/) 
- 1. [Udemy](https://www.udemy.com/) [@sungjuly]
- 1. [VIPKID](https://www.vipkid.com.cn/) [@illpanda]
- 1. [WeSure](https://www.wesure.cn/)
- 1. [Whale](http://whale.im)
- 1. [Windsor.ai](https://www.windsor.ai/) [@octaviancorlade]
- 1. [Yahoo!](https://yahoo.com/) 
- 1. [Zaihang](http://www.zaih.com/)
- 1. [Zalando](https://www.zalando.com) [@dmigo]
- 1. [Zalora](https://www.zalora.com) [@ksaagariconic]
-
-## License
-
+- 修改前端,对应文件：superset-frontend/src/SqlLab/components/ColumnElement.jsx，大概 64 行的位置开始
+```js
+return (
+  <div className="clearfix table-column">
+    <div className="pull-left m-l-10 col-name">
+      {name}
+      {icons}
+        (<span className="text-muted">{col.type}</span>)
+    </div>
+    <div className="pull-right text-muted">
+      <small>{col.comment}</small>
+    </div>
+  </div>
+);
 ```
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
 
-  http://www.apache.org/licenses/LICENSE-2.0
+- 修改后端，对应文件: superset/views/database/api.py 中的 `get_table_metadata` 方法
+> 对应 mysql,可以直接拿到 comment 字段，但是对应 hive 或者 presto 拿不到，所以改成 desc table 来取 comment 字段。
 
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
+```python
+def get_table_metadata(
+    database: Database, table_name: str, schema_name: Optional[str]
+) -> Dict:
+    """
+        Get table metadata information, including type, pk, fks.
+        This function raises SQLAlchemyError when a schema is not found.
+
+
+    :param database: The database model
+    :param table_name: Table name
+    :param schema_name: schema name
+    :return: Dict table metadata ready for API response
+    """
+    keys: List = []
+    columns = database.get_columns(table_name, schema_name)
+    # define comment dict by tsl
+    comment_dict = {}
+    primary_key = database.get_pk_constraint(table_name, schema_name)
+    if primary_key and primary_key.get("constrained_columns"):
+        primary_key["column_names"] = primary_key.pop("constrained_columns")
+        primary_key["type"] = "pk"
+        keys += [primary_key]
+    # get dialect name
+    dialect_name = database.get_dialect().name
+    if isinstance(dialect_name, bytes):
+        dialect_name = dialect_name.decode()
+    # get column comment, presto & hive
+    if dialect_name == "presto" or dialect_name == "hive":
+        db_engine_spec = database.db_engine_spec
+        sql = ParsedQuery("desc {a}.{b}".format(a=schema_name, b=table_name)).stripped()
+        engine = database.get_sqla_engine(schema_name)
+        conn = engine.raw_connection()
+        cursor = conn.cursor()
+        query = Query()
+        session = Session(bind=engine)
+        query.executed_sql = sql
+        query.__tablename__ = table_name
+        session.commit()
+        db_engine_spec.execute(cursor, sql, async_=False)
+        data = db_engine_spec.fetch_data(cursor, query.limit)
+        # parse list data into dict by tsl; hive and presto is different
+        if dialect_name == "presto":
+            for d in data:
+                d[3]
+                comment_dict[d[0]] = d[3]
+        else:
+            for d in data:
+                d[2]
+                comment_dict[d[0]] = d[2]
+        conn.commit()
+
+    foreign_keys = get_foreign_keys_metadata(database, table_name, schema_name)
+    indexes = get_indexes_metadata(database, table_name, schema_name)
+    keys += foreign_keys + indexes
+    payload_columns: List[Dict] = []
+    for col in columns:
+        dtype = get_col_type(col)
+        if len(comment_dict) > 0:
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    "comment": comment_dict[col["name"]],
+                }
+            )
+        elif dialect_name == "mysql":
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    "comment": col["comment"],
+                }
+            )
+        else:
+            payload_columns.append(
+                {
+                    "name": col["name"],
+                    "type": dtype.split("(")[0] if "(" in dtype else dtype,
+                    "longType": dtype,
+                    "keys": [k for k in keys if col["name"] in k.get("column_names")],
+                    # "comment": col["comment"],
+                }
+            )
+    return {
+        "name": table_name,
+        "columns": payload_columns,
+        "selectStar": database.select_star(
+            table_name,
+            schema=schema_name,
+            show_cols=True,
+            indent=True,
+            cols=columns,
+            latest_partition=True,
+        ),
+        "primaryKey": primary_key,
+        "foreignKeys": foreign_keys,
+        "indexes": keys,
+    }
+```
+
+### 修改过时方法
+
+> 后台有一个报错信息：AttributeError: 'DataFrame' object has no attribute 'ix‘,原因是 pandas 在 1.0.0 之后，移除了 ix 方法
+
+文件 superset/db_engine_specs/hive.py 中的 `_latest_partition_from_df` 方法
+
+```python
+@classmethod
+  def _latest_partition_from_df(cls, df: pd.DataFrame) -> Optional[List[str]]:
+      """Hive partitions look like ds={partition name}"""
+      if not df.empty:
+          return [df.iloc[:, 0].max().split("=")[1]]
+      return None
+
 ```
