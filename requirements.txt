@@ -56,7 +56,7 @@ marshmallow-enum==1.5.1   # via flask-appbuilder
 marshmallow-sqlalchemy==0.23.0  # via flask-appbuilder
 marshmallow==2.21.0       # via flask-appbuilder, marshmallow-enum, marshmallow-sqlalchemy
 msgpack==1.0.0            # via apache-superset (setup.py)
-numpy==1.18.4             # via pandas, pyarrow
+numpy==1.22.0             # via pandas, pyarrow
 packaging==20.3           # via bleach
 pandas==1.0.3             # via apache-superset (setup.py)
 parsedatetime==2.5        # via apache-superset (setup.py)
